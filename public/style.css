@@ -1,0 +1,370 @@
+/* IMPORT FONT */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
+
+/* GENERAL PARAMETERS */
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /* border: 1px solid red; */
+}
+
+body {
+    background: rgb(0, 109, 109);
+    background: linear-gradient(160deg, rgba(0, 109, 109, 1) 0%, rgba(3, 82, 89, 1) 6%, rgba(7, 51, 67, 0.8939950980392157) 12%, rgba(8, 41, 60, 0.9724264705882353) 56%, rgba(9, 33, 54, 1) 79%, rgba(10, 25, 48, 1) 100%);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+img {
+    max-width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* NAVBAR */
+
+nav {
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    background: rgb(0, 109, 109);
+    background: linear-gradient(153deg, rgba(0, 109, 109, 1) 0%, rgba(10, 25, 48, 1) 53%);
+    padding: 5px 20px;
+    letter-spacing: 1px;
+    box-shadow: 0px 0px 71px 23px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 71px 23px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 71px 23px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.menu li {
+    padding: 15px 5px;
+}
+
+.menu li a {
+    display: block;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+/* change scale to change logo size, height will change the contenair space and make the nav bigger */
+.nav-logo a img {
+    margin-left: 8px;
+    margin-top: 10px;
+    height: 32px;
+    scale: 2;
+}
+
+.button a {
+    text-decoration: none;
+    padding: 7px 15px;
+    background: teal;
+    border: 1px solid #006d6d;
+    border-radius: 50em;
+}
+
+.button.secondary a {
+    background: transparent;
+}
+
+.button a:hover {
+    transition: all .25s;
+}
+
+.button:not(.secondary) a:hover {
+    background: #006d6d;
+    border-color: #005958;
+}
+
+.button.secondary a:hover {
+    color: #ddd;
+}
+
+.underline-effect {
+    position: relative;
+}
+
+.underline-effect a {
+    color: #ccc9c9;
+}
+
+.underline-effect a:hover {
+    color: #ffffff;
+    transition: all .25s;
+    font-size: 22px;
+}
+
+.underline-effect::after {
+    content: "";
+    position: absolute;
+    background-color: #006d6d;
+    height: 3px;
+    width: 100%;
+    left: 0;
+    bottom: 1px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.5s;
+}
+
+.underline-effect:hover::after {
+    transform: scaleX(1);
+}
+
+/* Mobile Nav */
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle {
+    order: 1;
+}
+
+.nav-item.button {
+    order: 2;
+}
+
+.nav-item {
+    width: 100%;
+    text-align: center;
+    order: 3;
+    display: none;
+}
+
+.nav-item.active {
+    display: block;
+}
+
+.toggle {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.bars {
+    background: #999;
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    width: 25px;
+}
+
+.bars::before,
+.bars::after {
+    background: #999;
+    display: inline-block;
+    content: "";
+    height: 2px;
+    position: absolute;
+    width: 25px;
+}
+
+.bars::before {
+    top: 8px;
+}
+
+.bars::after {
+    top: -8px;
+}
+
+/* Large Mobile Nav */
+
+@media all and (max-width: 467px) {
+    .menu li a {
+        margin: auto;
+        width: 9em;
+    }
+}
+
+@media all and (min-width: 468px) {
+    .menu {
+        justify-content: center;
+    }
+
+    .nav-logo {
+        flex: 1;
+    }
+
+    .nav-item.button {
+        width: auto;
+        order: 1;
+        display: block;
+    }
+
+    .toggle {
+        order: 2;
+    }
+
+    .button.secondary {
+        border: 0;
+    }
+}
+
+/* TABLET & DESKTOP NAV */
+@media all and (min-width: 768px) {
+    .nav-item {
+        display: block;
+        width: auto;
+    }
+
+    .toggle {
+        display: none;
+    }
+
+    .nav-logo {
+        order: 0;
+    }
+
+    .nav-item {
+        order: 1;
+    }
+
+    .button {
+        order: 2;
+    }
+
+    .menu li {
+        padding: 15px 10px;
+    }
+
+    .menu li.button {
+        padding-right: 0;
+    }
+}
+
+/* HERO-BANNER RESPONSIVE */
+
+.main {
+    display: inline-block;
+    width: 100%;
+    height: 520px;
+}
+
+.hero-banner-container {
+    margin-top: 70px;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+    background: rgba(7, 51, 67, 0.8939950980392157);
+}
+
+.hero-banner-title {
+    color: rgb(255, 255, 255);
+    font-size: 2.6em;
+    margin-bottom: 20px;
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.hero-banner-sub-title {
+    color: rgba(230, 225, 225, 0.884);
+    font-size: 1.3em;
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+/* ABOUT ME */
+
+.about-me-container {
+    width: 90%;
+    height: 825px;
+    background: rgba(128, 128, 128, 0.233);
+    border-radius: 250px;
+    margin: 30px auto;
+    border: 15px solid #093444;
+}
+
+.about-me-title {
+    color: rgb(255, 255, 255);
+    width: auto;
+    padding-top: 50px;
+    font-size: 2em;
+}
+
+.container-box {
+    width: 15em;
+    white-space: nowrap;
+    margin: auto;
+    padding-top: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo-profil-container {
+    width: 38vmin;
+    height: 38vmin;
+    margin: 25px 0;
+}
+
+.container-flex {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'photo';
+}
+
+.photo-profil-bg {
+    grid-area: photo;
+    background: url(/assets/img/splash.png) center/contain no-repeat;
+    animation: rotate 30s linear infinite;
+    scale: 1.15;
+}
+
+.photo-profil {
+    background: url(/assets/img/photo-profil.png) center/contain no-repeat;
+    filter: brightness(80%);
+    grid-area: photo;
+    border-radius: 42%;
+}
+
+.about-me-info {
+    color: white;
+    font-size: 1.25em;
+    padding: 3px;
+    letter-spacing: 1px;
+    line-height: 28px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
