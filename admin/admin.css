@@ -1,0 +1,81 @@
+/* Centrer les éléments sur la page */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Style pour le titre h1 */
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+/* Style pour les formulaires */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 1em;
+    width: 400px;
+    margin-bottom: 1em;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+/* Style pour les labels */
+label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+/* Style pour les inputs */
+input[type="text"] {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+/* Style pour les boutons */
+button[type="submit"] {
+    padding: 0.5em 1em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Style pour le tableau */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+/* Style pour les cellules du tableau */
+th,
+td {
+    padding: 0.5em;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+/* Style pour les cellules de la première ligne du tableau */
+th {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}

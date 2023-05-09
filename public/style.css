@@ -127,39 +127,6 @@ a {
 .underline-effect:hover::after {
     transform: scaleX(1);
 }
-
-.slide-in {
-    animation: slide-in 1s ease-in forwards;
-}
-
-.slide-out {
-    animation: slide-out 1s ease-in forwards;
-}
-
-@keyframes slide-in {
-    from {
-        max-height: 0;
-        opacity: 0;
-    }
-
-    to {
-        max-height: 100%;
-        opacity: 1;
-    }
-}
-
-@keyframes slide-out {
-    from {
-        max-height: 100%;
-        opacity: 1;
-    }
-
-    to {
-        max-height: 0;
-        opacity: 0;
-    }
-}
-
 /* Mobile Nav */
 
 .menu {
@@ -607,7 +574,7 @@ a {
 
 .projets-card::after {
     content: "GITHUB";
-    background-color: #ad7624d1;
+    background-color: #ad7624;
     border-color: black;
     padding: 10px;
     position: absolute;
@@ -705,7 +672,7 @@ form .corps-formulaire .droite .groupe {
     height: 100%;
 }
 
-form .corps-formulaire .droite .groupe textarea {
+form .corps-formulaire .droite .groupe #message {
     margin-top: 5px;
     padding: 10px;
     background-color: #f1f1f1;
