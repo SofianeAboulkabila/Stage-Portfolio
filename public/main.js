@@ -137,92 +137,89 @@ fetch('data.json')
     .then(response => response.json())
     .then(data => {
         data.forEach(card => projetsContainer.addCard(card));
+
+        const cards = document.querySelectorAll('.projets-card');
+        cards.forEach((card, index) => {
+            const link = data[index].link;
+
+            const linkButton = document.createElement('a');
+            linkButton.classList.add('projets-github-link');
+            linkButton.setAttribute('href', link);
+            linkButton.setAttribute('target', '_blank');
+            card.parentNode.insertBefore(linkButton, card);
+            linkButton.appendChild(card);
+
+            const linkButtonAfter = document.createElement('div');
+            linkButtonAfter.classList.add('projets-card-link-after');
+            linkButtonAfter.innerHTML = '';
+            linkButton.appendChild(linkButtonAfter);
+        });
+
+        // PROJETS BUTTON +1 / +1 
+
+        const projetsContainerSecondary = document.querySelector('.projets-container-secondary');
+        const plusOneButton = document.querySelector('#plus-one');
+        const minusOneButton = document.querySelector('#minus-one');
+
+        let cardCount;
+
+        // Fonction pour déterminer le nombre de cartes à afficher en fonction de la largeur de l'écran
+        function setCardCount() {
+            if (window.innerWidth <= 768) {
+                cardCount = 2;
+                minusOneButton.style.display = 'none';
+            } else {
+                cardCount = data.length;
+                if (cardCount > 2) {
+                    minusOneButton.style.display = '';
+                } else {
+                    minusOneButton.style.display = 'none';
+                }
+            }
+        }
+
+        // Fonction pour afficher le nombre de cartes défini par cardCount
+        function displayCards() {
+            cards.forEach((card, index) => {
+                if (index < cardCount) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        setCardCount();
+        displayCards();
+
+        window.addEventListener('resize', () => {
+            setCardCount();
+            displayCards();
+        });
+
+        plusOneButton.addEventListener('click', () => {
+            cardCount++;
+            if (cardCount >= data.length) {
+                plusOneButton.style.display = 'none';
+            }
+            if (cardCount > 2) {
+                minusOneButton.style.display = '';
+            }
+            displayCards();
+        });
+
+        minusOneButton.addEventListener('click', () => {
+            cardCount--;
+            if (cardCount <= 2) {
+                minusOneButton.style.display = 'none';
+            }
+            if (cardCount < data.length) {
+                plusOneButton.style.display = '';
+            }
+            displayCards();
+        });
     })
     .catch(error => console.error(error));
-
-const cards = document.querySelectorAll('.projets-card');
-cards.forEach((card, index) => {
-    const link = CardsData[index].link;
-
-    const linkButton = document.createElement('a');
-    linkButton.classList.add('projets-github-link');
-    linkButton.setAttribute('href', link);
-    linkButton.setAttribute('target', '_blank');
-    card.parentNode.insertBefore(linkButton, card);
-    linkButton.appendChild(card);
-
-    const linkButtonAfter = document.createElement('div');
-    linkButtonAfter.classList.add('projets-card-link-after');
-    linkButtonAfter.innerHTML = '';
-    linkButton.appendChild(linkButtonAfter);
-});
-
-// PROJETS BUTTON +1 / +1 
-
-const projetsContainerSecondary = document.querySelector('.projets-container-secondary');
-const projetsCards = document.querySelectorAll('.projets-card');
-const plusOneButton = document.querySelector('#plus-one');
-const minusOneButton = document.querySelector('#minus-one');
-
-let cardCount;
-
-// Fonction pour déterminer le nombre de cartes à afficher en fonction de la largeur de l'écran
-function setCardCount() {
-    if (window.innerWidth <= 768) {
-        cardCount = 2;
-        minusOneButton.style.display = 'none';
-    } else {
-        cardCount = projetsCards.length;
-        if (cardCount > 2) {
-            minusOneButton.style.display = '';
-        } else {
-            minusOneButton.style.display = 'none';
-        }
-    }
-}
-
-// Fonction pour afficher le nombre de cartes défini par cardCount
-function displayCards() {
-    for (let i = 0; i < projetsCards.length; i++) {
-        if (i < cardCount) {
-            projetsCards[i].style.display = '';
-        } else {
-            projetsCards[i].style.display = 'none';
-        }
-    }
-}
-
-
-setCardCount();
-displayCards();
-
-
-window.addEventListener('resize', () => {
-    setCardCount();
-    displayCards();
-});
-
-plusOneButton.addEventListener('click', () => {
-    cardCount++;
-    if (cardCount >= projetsCards.length) {
-        plusOneButton.style.display = 'none';
-    }
-    if (cardCount > 2) {
-        minusOneButton.style.display = '';
-    }
-    displayCards();
-});
-
-minusOneButton.addEventListener('click', () => {
-    cardCount--;
-    if (cardCount <= 2) {
-        minusOneButton.style.display = 'none';
-    }
-    if (cardCount < projetsCards.length) {
-        plusOneButton.style.display = '';
-    }
-    displayCards();
-});
 
 // STMP.JS API MAIL
 
