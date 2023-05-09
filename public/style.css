@@ -1,5 +1,4 @@
 /* IMPORT FONT */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 
 
@@ -17,7 +16,7 @@
 body {
     background: rgb(0, 109, 109);
     background: linear-gradient(160deg, rgba(0, 109, 109, 1) 0%, rgba(3, 82, 89, 1) 6%, rgba(7, 51, 67, 0.8939950980392157) 12%, rgba(8, 41, 60, 0.9724264705882353) 56%, rgba(9, 33, 54, 1) 79%, rgba(10, 25, 48, 1) 100%);
-    font-family: "Montserrat", sans-serif;
+    font-family: "Lato", sans-serif;
     font-weight: 500;
 }
 
@@ -131,6 +130,38 @@ a {
 
 .underline-effect:hover::after {
     transform: scaleX(1);
+}
+
+.slide-in {
+    animation: slide-in 1s ease-in forwards;
+}
+
+.slide-out {
+    animation: slide-out 1s ease-in forwards;
+}
+
+@keyframes slide-in {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    to {
+        max-height: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        max-height: 100%;
+        opacity: 1;
+    }
+
+    to {
+        max-height: 0;
+        opacity: 0;
+    }
 }
 
 /* Mobile Nav */
@@ -259,6 +290,34 @@ a {
 
 /* HERO-BANNER RESPONSIVE */
 
+/* VIDEO */
+
+
+.video-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
 .main {
     display: inline-block;
     width: 100%;
@@ -266,7 +325,7 @@ a {
 }
 
 .hero-banner-container {
-    margin-top: 70px;
+    margin-top: 85px;
     padding-right: 15px;
     padding-left: 15px;
     display: flex;
@@ -274,14 +333,12 @@ a {
     justify-content: center;
     flex-direction: column;
     height: 500px;
-    background: rgba(7, 51, 67, 0.8939950980392157);
 }
 
 .hero-banner-title {
     color: rgb(255, 255, 255);
     font-size: 2.6em;
     margin-bottom: 20px;
-    font-family: "Lato", sans-serif;
     font-weight: 900;
     letter-spacing: 2px;
 }
@@ -289,37 +346,42 @@ a {
 .hero-banner-sub-title {
     color: rgba(230, 225, 225, 0.884);
     font-size: 1.3em;
-    font-family: "Lato", sans-serif;
     font-weight: 900;
     letter-spacing: 1px;
 }
 
 /* ABOUT ME */
 
-.about-me-container {
+.about-me-container-grid {
     width: 90%;
-    height: 825px;
+    height: 845px;
     background: rgba(128, 128, 128, 0.233);
     border-radius: 250px;
     margin: 30px auto;
-    border: 15px solid #093444;
+    border: 15px solid #0d2934;
+}
+
+
+.about-me-container-p {
+    grid-area: p;
 }
 
 .about-me-title {
     color: rgb(255, 255, 255);
     width: auto;
-    padding-top: 50px;
-    font-size: 2em;
+    font-size: clamp(2.5rem, 1.5rem + 2vw, 12rem);
+    margin: 1em;
+    grid-area: title;
 }
 
 .container-box {
     width: 15em;
     white-space: nowrap;
     margin: auto;
-    padding-top: 5em;
     display: flex;
     flex-direction: column;
     align-items: center;
+    grid-area: photo-div;
 }
 
 .photo-profil-container {
@@ -328,7 +390,7 @@ a {
     margin: 25px 0;
 }
 
-.container-flex {
+.container-photo-grid {
     height: 100%;
     display: grid;
     grid-template-rows: 1fr;
@@ -341,22 +403,27 @@ a {
     grid-area: photo;
     background: url(/assets/img/splash.png) center/contain no-repeat;
     animation: rotate 30s linear infinite;
-    scale: 1.15;
+    scale: 1.35;
 }
 
 .photo-profil {
     background: url(/assets/img/photo-profil.png) center/contain no-repeat;
-    filter: brightness(80%);
+    filter: brightness(78%);
     grid-area: photo;
     border-radius: 42%;
 }
 
 .about-me-info {
     color: white;
-    font-size: 1.25em;
-    padding: 3px;
+    font-size: 1.1em;
+    padding: 8px 5px;
     letter-spacing: 1px;
     line-height: 28px;
+}
+
+.about-me-info-important {
+    font-size: 1.35em;
+    color: #0b9997;
 }
 
 @keyframes rotate {
@@ -368,3 +435,212 @@ a {
         transform: rotate(360deg);
     }
 }
+
+/* TABLET/DESKTOP CONTAINER GRID */
+@media all and (min-width: 768px) {
+    .about-me-container-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        gap: 0px 0px;
+        grid-template-areas:
+            ". . title title title . ."
+            ". . . photo-div photo-div photo-div photo-div"
+            "p p p photo-div photo-div photo-div photo-div"
+            "p p p photo-div photo-div photo-div photo-div"
+            "p p p photo-div photo-div photo-div photo-div"
+            "p p p photo-div photo-div photo-div photo-div"
+            "p p p photo-div photo-div photo-div photo-div"
+            "p p p photo-div photo-div photo-div photo-div"
+            "p p p . . . ."
+            ". . . . . . .";
+    }
+
+    .about-me-container-p {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 15%;
+    }
+}
+
+/* PROJETS */
+
+.projets-container {
+    height: auto;
+    margin: 20px;
+    padding: 50px 0;
+    background: rgba(128, 128, 128, 0.233);
+    border-radius: 200px;
+    border: 15px solid #0d2934;
+}
+
+.projets-card {
+    margin: auto;
+    height: 375px;
+    width: 215px;
+    perspective: 1000px;
+    margin-bottom: 20px;
+}
+
+.projets-card:hover {
+    z-index: 10;
+}
+
+
+.projets-content-card {
+    border: 4px solid teal;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+        "image"
+        "image"
+        "image"
+        "titre"
+        "sub"
+        "button";
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    border-radius: 25px;
+    transition: all 0.15s ease-out;
+    background: black;
+}
+
+.projets-card img {
+    grid-area: image;
+}
+
+.projets-title {
+    grid-area: titre;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.projets-sub-title {
+    grid-area: sub;
+    color: teal;
+    font-size: 1em;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.projets-button {
+    height: 20px;
+    width: 80px;
+    margin: auto;
+}
+
+.glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 0.15s ease-out;
+    border-radius: 25px;
+    mix-blend-mode: hard-light;
+    opacity: 0.5;
+    background: radial-gradient(circle at 50% 0%, rgb(209, 205, 205), transparent);
+}
+
+.projets-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#minus-one,
+#plus-one {
+    text-decoration: none;
+    padding: 7px 15px;
+    background: rgba(0, 128, 128, 0.692);
+    border: 1px solid white;
+    border-radius: 50em;
+    font-size: 1.15em;
+    margin: 10px;
+}
+
+#minus-one {
+    background: rgb(219, 172, 17) !important;
+}
+
+.projets-container:nth-child(1) {
+    grid-area: p1;
+}
+
+.projets-container:nth-child(2) {
+    grid-area: p2;
+}
+
+.projets-container:nth-child(3) {
+    grid-area: p3;
+}
+
+.projets-container:nth-child(4) {
+    grid-area: p4;
+}
+
+/* TABLET PROJETS GRID */
+
+@media all and (min-width: 768px) {
+    .projets-container-secondary {
+        height: 100%;
+        width: 100%;
+        margin: auto;
+        padding: 3em;
+        display: grid;
+        grid-gap: 3em;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "p1 p2"
+            "p3 p4";
+    }
+
+    #minus-one,
+    #plus-one {
+        display: none;
+    }
+
+}
+
+.projets-card::after {
+    content: "GITHUB";
+    background-color: #11918e;
+    border-color: black;
+    padding: 10px;
+    position: absolute;
+    top: -15px;
+    left: 0%;
+    transform: translateX(-50%);
+    border: 3px solid rgb(0, 114, 129);
+    border-radius: 100px;
+}
+.projets-card:hover::after {
+    cursor: pointer;
+}
+
+/* version tablette */
+/* .projets-card::after {
+    content: "GITHUB";
+    background-color: #11918e;
+    border-color: black;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: -95px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.projets-card:hover::after {
+    cursor: pointer;
+} */

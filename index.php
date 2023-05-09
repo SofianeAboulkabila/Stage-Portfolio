@@ -17,8 +17,11 @@
     <!-- HERO-BANNER -->
     <?php include './assets/compenents/hero-banner.php' ?>
 
-    <!-- About -->
-    <?php include './assets/compenents/about-me.php' ?>
+    <!-- A PROPOS -->
+    <?php include './assets/compenents/a-propos.php' ?>
+
+    <!-- PROJETS -->
+    <?php include './assets/compenents/projets.php' ?>
 
     <script src="/public/main.js" defer></script>
 </body>
