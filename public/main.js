@@ -1,4 +1,4 @@
-// BURGER MENU + ANIMATION 
+// BURGER MENU 
 const toggle = document.querySelector(".toggle");
 const items = document.querySelectorAll(".nav-item");
 
@@ -234,7 +234,7 @@ submit.addEventListener('submit', (e) => {
 
 
     let ebody = `
-         <b>Name:</b>${fname.value}&nbsp;${lname.value}<br>
+         <bName:</b>${fname.value}&nbsp;${lname.value}<br>
          <br>
          <b>Email:</b>${email.value}<br>
          <b>Message:</b>${message.value}<br>
