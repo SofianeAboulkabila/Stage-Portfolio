@@ -28,5 +28,11 @@
     "link": "https://github.com/SofianeAboulkabila/javascript-quizz",
     "img": "/assets/img/quizz.png",
     "skills": ["HTML", "CSS", "JavaScript"]
+  },
+  {
+    "name": "apiPokeCrude",
+    "link": "https://github.com/SofianeAboulkabila/apiPoke",
+    "img": "/assets/img/apiPoke.png",
+    "skills": ["HTML", "CSS", "JavaScript(API/CRUDE"]
   }
 ]
